@@ -7,7 +7,7 @@ fn parse(lines []string) [][]bool {
 	mut trees := [][]bool{}
 	for i in 0 .. lines.len {
 		line := lines[i]
-		trees.push(line.bytes().map(it == `#`))
+		trees << line.bytes().map(it == `#`)
 	}
 	return trees
 }

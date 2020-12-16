@@ -31,7 +31,7 @@ fn parse(lines []string) []Policy {
 		value_parts := value_part.split('-')
 		value_0 := value_parts[0].int()
 		value_1 := value_parts[1].int()
-		policies.push(Policy{value_0, value_1, char, password})
+		policies << Policy{value_0, value_1, char, password}
 	}
 	return policies
 }

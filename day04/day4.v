@@ -13,7 +13,7 @@ fn parse(lines []string) []map[string]string {
 	mut current := map[string]string{}
 	for line in lines {
 		if line == '' {
-			passports.push(current)
+			passports << current
 			current = map[string]string{}
 		} else {
 			parts := line.split(' ')
@@ -24,7 +24,7 @@ fn parse(lines []string) []map[string]string {
 		}
 	}
 	if current.len > 0 {
-		passports.push(current)
+		passports << current
 	}
 	return passports
 }
