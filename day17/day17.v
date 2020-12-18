@@ -24,7 +24,7 @@ fn parse(input []string) [][]int {
 	return first
 }
 
-fn nearby_3d(room [][]int, y int, x int) int {
+fn nearby_2d(room [][]int, y int, x int) int {
 	mut adjacent := 0
 	if room[y][x] == active {
 		adjacent++
@@ -158,15 +158,15 @@ fn solve_a(input []string) int {
 			for y in 0 .. room[z].len {
 				mut row := []int{}
 				for x in 0 .. room[z][y].len {
-					mut adjacent := nearby_3d(room[z], y, x)
+					mut adjacent := nearby_2d(room[z], y, x)
 					if room[z][y][x] == active {
 						adjacent--
 					}
 					if z > 0 {
-						adjacent += nearby_3d(room[z - 1], y, x)
+						adjacent += nearby_2d(room[z - 1], y, x)
 					}
 					if z + 1 < room.len {
-						adjacent += nearby_3d(room[z + 1], y, x)
+						adjacent += nearby_2d(room[z + 1], y, x)
 					}
 					mut cube := room[z][y][x]
 					if cube == active && !(adjacent == 2 || adjacent == 3) {
@@ -210,33 +210,33 @@ fn solve_b(input []string) int {
 				for y in 0 .. room[z].len {
 					mut row := []int{}
 					for x in 0 .. room[z][y].len {
-						mut adjacent := nearby_3d(room[w][z], y, x)
+						mut adjacent := nearby_2d(room[w][z], y, x)
 						if room[w][z][y][x] == active {
 							adjacent--
 						}
 						if z > 0 {
-							adjacent += nearby_3d(room[w][z - 1], y, x)
+							adjacent += nearby_2d(room[w][z - 1], y, x)
 							if w > 0 {
-								adjacent += nearby_3d(room[w - 1][z - 1], y, x)
+								adjacent += nearby_2d(room[w - 1][z - 1], y, x)
 							}
 							if w + 1 < room.len {
-								adjacent += nearby_3d(room[w + 1][z - 1], y, x)
+								adjacent += nearby_2d(room[w + 1][z - 1], y, x)
 							}
 						}
 						if z + 1 < room[0].len {
-							adjacent += nearby_3d(room[w][z + 1], y, x)
+							adjacent += nearby_2d(room[w][z + 1], y, x)
 							if w > 0 {
-								adjacent += nearby_3d(room[w - 1][z + 1], y, x)
+								adjacent += nearby_2d(room[w - 1][z + 1], y, x)
 							}
 							if w + 1 < room.len {
-								adjacent += nearby_3d(room[w + 1][z + 1], y, x)
+								adjacent += nearby_2d(room[w + 1][z + 1], y, x)
 							}
 						}
 						if w > 0 {
-							adjacent += nearby_3d(room[w - 1][z], y, x)
+							adjacent += nearby_2d(room[w - 1][z], y, x)
 						}
 						if w + 1 < room.len {
-							adjacent += nearby_3d(room[w + 1][z], y, x)
+							adjacent += nearby_2d(room[w + 1][z], y, x)
 						}
 						mut cube := room[w][z][y][x]
 						if cube == active && !(adjacent == 2 || adjacent == 3) {
