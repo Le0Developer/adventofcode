@@ -34,8 +34,8 @@ fn solve_a(input []string, noun int, verb int) int {
 }
 
 fn solve_b(input []string) int {
-	for noun in 0..99 {
-		for verb in 0..99 {
+	for noun in 0 .. 99 {
+		for verb in 0 .. 99 {
 			result := solve_a(input, noun, verb)
 			if result == 19690720 {
 				return 100 * noun + verb
