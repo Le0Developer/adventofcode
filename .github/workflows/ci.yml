@@ -18,6 +18,9 @@ jobs:
         run: |
           make
           sudo ./v symlink
+      - name: Install Dependencies
+        run: |
+          v install pcre
       - name: Test code
         run: |
           cd aoc
