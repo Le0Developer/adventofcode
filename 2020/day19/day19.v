@@ -70,13 +70,9 @@ fn solve_a(input []string) int {
 	}
 	regex := '^' + build_regex(rules, '0', 0) + '$'
 	// println(regex)
-	re := pcre.new_regex(regex, 0) or {
-		panic('panic')
-	}
+	re := pcre.new_regex(regex, 0) or { panic('panic') }
 	for message in to_test {
-		re.match_str(message, 0, 0) or {
-			continue
-		}
+		re.match_str(message, 0, 0) or { continue }
 		total++
 	}
 	re.free()
@@ -106,16 +102,14 @@ fn solve_b(input []string) int {
 	re := pcre.new_regex(regex, 0) or {
 		if err == 'Failed to compile regex' {
 			println('PCRE cannot handle our regex, using python instead...')
-			command := 'python -c "import re; r = re.compile(\'${regex}\'); print(len([x for x in $to_test if r.fullmatch(x)]))"'
+			command := 'python -c "import re; r = re.compile(\'$regex\'); print(len([x for x in $to_test if r.fullmatch(x)]))"'
 			result := os.exec(command) or { panic(err) }
 			return result.output.int()
 		}
 		panic(err)
 	}
 	for message in to_test {
-		re.match_str(message, 0, 0) or {
-			continue
-		}
+		re.match_str(message, 0, 0) or { continue }
 		total++
 	}
 	re.free()
