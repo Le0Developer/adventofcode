@@ -70,7 +70,7 @@ fn solve_a(input []string) int {
 	}
 	regex := '^' + build_regex(rules, '0', 0) + '$'
 	// println(regex)
-	re := pcre.new_regex(regex, 0) or { panic('panic') }
+	re := pcre.new_regex(regex, 0) or { panic(err) }
 	for message in to_test {
 		re.match_str(message, 0, 0) or { continue }
 		total++
@@ -98,7 +98,7 @@ fn solve_b(input []string) int {
 	rules['8'] = '42 | 42 8'
 	rules['11'] = '42 31 | 42 11 31'
 	regex := '^' + build_regex(rules, '0', 0) + '$'
-	println(regex.len)
+	// println(regex)
 	re := pcre.new_regex(regex, 0) or {
 		if err == 'Failed to compile regex' {
 			println('PCRE cannot handle our regex, using python instead...')
