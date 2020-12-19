@@ -49,7 +49,7 @@ fn build_regex(rules map[string]string, ruleno string, dept int) string {
 	if !is_pipe {
 		return out
 	}
-	return '(' + out + ')'
+	return '(?:' + out + ')'
 }
 
 fn solve_a(input []string) int {
