@@ -1,11 +1,11 @@
 import flag
 import os
 
-fn challenge_a(input_lines []string) i64 {
+fn challenge_a(input_lines []string) ?i64 {
 	// code here
 }
 
-fn challenge_b(input_lines []string) i64 {
+fn challenge_b(input_lines []string) ?i64 {
 	// code here
 }
 
@@ -23,6 +23,6 @@ fn main() {
 	}
 	input_filename := additional_args[0]
 	input_lines := os.read_lines(input_filename) ?
-	solution := if !is_b { challenge_a(input_lines) } else { challenge_b(input_lines) }
+	solution := if !is_b { challenge_a(input_lines) ? } else { challenge_b(input_lines) ? }
 	println('Solution is $solution')
 }
