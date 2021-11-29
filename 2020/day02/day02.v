@@ -4,9 +4,9 @@ import os
 import os.cmdline
 
 struct Policy {
-	value_0  int // X-y z: abcdef
-	value_1  int // x-Y z: abcdef
-	char     rune // x-y Z: abcdef
+	value_0  int    // X-y z: abcdef
+	value_1  int    // x-Y z: abcdef
+	char     rune   // x-y Z: abcdef
 	password string // x-y z: ABCDEF
 }
 
@@ -16,9 +16,8 @@ fn (p Policy) valid_a() bool {
 }
 
 fn (p Policy) valid_b() bool {
-	return (p.password[p.value_0 - 1] == p.char &&
-		p.password[p.value_1 - 1] != p.char) ||
-		(p.password[p.value_0 - 1] != p.char && p.password[p.value_1 - 1] == p.char)
+	return (p.password[p.value_0 - 1] == p.char && p.password[p.value_1 - 1] != p.char)
+		|| (p.password[p.value_0 - 1] != p.char && p.password[p.value_1 - 1] == p.char)
 }
 
 fn parse(lines []string) []Policy {

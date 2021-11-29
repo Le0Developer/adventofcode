@@ -10,8 +10,8 @@ struct Field {
 	range_2_min int
 	range_2_max int
 mut:
-	matching    []int
-	matched     bool
+	matching []int
+	matched  bool
 }
 
 fn solve_a(input []string) int {
@@ -72,8 +72,7 @@ fn solve_b(input []string) i64 {
 			parts := line.split(': ')[1].split(' ')
 			range_1 := parts[0].split('-')
 			range_2 := parts[2].split('-')
-			fields <<
-				Field{line.split(': ')[0], range_1[0].int(), range_1[1].int(), range_2[0].int(), range_2[1].int(), []int{}, false}
+			fields << Field{line.split(': ')[0], range_1[0].int(), range_1[1].int(), range_2[0].int(), range_2[1].int(), []int{}, false}
 		} else if state == 1 {
 			myticket = line.split(',').map(it.int())
 		} else if state == 2 {
@@ -82,9 +81,8 @@ fn solve_b(input []string) i64 {
 			for ticket_field in ticket_fields {
 				mut field_is_valid := false
 				for field in fields {
-					if (ticket_field >= field.range_1_min &&
-						ticket_field <= field.range_1_max) ||
-						(ticket_field >= field.range_2_min && ticket_field <= field.range_2_max) {
+					if (ticket_field >= field.range_1_min && ticket_field <= field.range_1_max)
+						|| (ticket_field >= field.range_2_min && ticket_field <= field.range_2_max) {
 						field_is_valid = true
 						break
 					}
@@ -103,9 +101,8 @@ fn solve_b(input []string) i64 {
 		for i in 0 .. fields.len {
 			mut mismatch := false
 			for ticket in valid_tickets {
-				if !((ticket[i] >= field.range_1_min &&
-					ticket[i] <= field.range_1_max) ||
-					(ticket[i] >= field.range_2_min && ticket[i] <= field.range_2_max)) {
+				if !((ticket[i] >= field.range_1_min && ticket[i] <= field.range_1_max)
+					|| (ticket[i] >= field.range_2_min && ticket[i] <= field.range_2_max)) {
 					mismatch = true
 					break
 				}

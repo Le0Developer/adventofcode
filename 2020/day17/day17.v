@@ -86,8 +86,7 @@ fn expand_room_4d(room [][][][]int) [][][][]int {
 	whateverlength := room[0].len + 2
 	rowlength := room[0][0][0].len + 2
 	linelength := room[0][0].len + 2
-	new <<
-		[[[inactive].repeat(rowlength)].repeat(linelength)].repeat(whateverlength)
+	new << [[[inactive].repeat(rowlength)].repeat(linelength)].repeat(whateverlength)
 	for w in 0 .. room.len {
 		mut whatever := [][][]int{}
 		whatever << [[inactive].repeat(rowlength)].repeat(linelength)
@@ -106,8 +105,7 @@ fn expand_room_4d(room [][][][]int) [][][][]int {
 		whatever << [[inactive].repeat(rowlength)].repeat(linelength)
 		new << whatever
 	}
-	new <<
-		[[[inactive].repeat(rowlength)].repeat(linelength)].repeat(whateverlength)
+	new << [[[inactive].repeat(rowlength)].repeat(linelength)].repeat(whateverlength)
 	return new
 }
 

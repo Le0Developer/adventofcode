@@ -85,9 +85,7 @@ fn solve_b(passports []map[string]string) int {
 			}
 			hcl := passport['hcl']
 			if hcl[0] == `#` {
-				if hcl.bytes().filter((it >= 0x30 &&
-					it <= 0x39) ||
-					(it >= 0x61 && it <= 0x66)).len != 6 {
+				if hcl.bytes().filter((it >= 0x30 && it <= 0x39) || (it >= 0x61 && it <= 0x66)).len != 6 {
 					is_valid = false
 				}
 			} else {

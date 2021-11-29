@@ -27,8 +27,8 @@ fn solve_a(trees [][]bool, dy int, dx int) int {
 }
 
 fn solve_b(trees [][]bool) int {
-	return solve_a(trees, 1, 1) * solve_a(trees, 1, 3) * solve_a(trees, 1, 5) * solve_a(trees, 1, 7) *
-		solve_a(trees, 2, 1)
+	return solve_a(trees, 1, 1) * solve_a(trees, 1, 3) * solve_a(trees, 1, 5) * solve_a(trees,
+		1, 7) * solve_a(trees, 2, 1)
 }
 
 fn main() {
