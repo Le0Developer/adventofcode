@@ -178,7 +178,7 @@ fn solve_a(input []string) int {
 			}
 			new << layer
 		}
-		room = new
+		room = new.clone()
 	}
 	mut count := 0
 	for layer in room {
@@ -250,7 +250,7 @@ fn solve_b(input []string) int {
 			}
 			new << whatever
 		}
-		room = new
+		room = new.clone()
 	}
 	mut count := 0
 	for whatever in room {

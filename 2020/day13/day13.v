@@ -10,7 +10,7 @@ fn solve_a(input []string) int {
 	mut lowest := [2147483647, -1]
 	for entry in diff {
 		if entry[0] < lowest[0] {
-			lowest = entry
+			lowest = entry.clone()
 		}
 	}
 	return lowest[0] * lowest[1]

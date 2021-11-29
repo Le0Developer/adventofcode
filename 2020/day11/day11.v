@@ -80,7 +80,7 @@ fn solve_a(seats_ [][]int) int {
 			}
 			new << row
 		}
-		seats = new
+		seats = new.clone()
 	}
 	mut count := 0
 	for row in seats {
@@ -210,7 +210,7 @@ fn solve_b(seats_ [][]int) int {
 			}
 			new << row
 		}
-		seats = new
+		seats = new.clone()
 	}
 	mut count := 0
 	for row in seats {

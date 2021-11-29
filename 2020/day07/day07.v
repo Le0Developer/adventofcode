@@ -19,7 +19,7 @@ fn parse(lines []string) map[string]map[string]int {
 				fields[parts[1..parts.len - 1].join(' ')] = parts[0].int()
 			}
 		}
-		bags[name] = fields
+		bags[name] = fields.clone()
 	}
 	return bags
 }

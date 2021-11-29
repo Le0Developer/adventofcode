@@ -12,7 +12,7 @@ fn build_regex(rules map[string]string, ruleno string, dept int) string {
 	rule := rules[ruleno]
 	// println('$ruleno $rule')
 	if rule[0] == `"` {
-		return rule[1].str()
+		return rune(rule[1]).str()
 	}
 	if dept >= max_dept {
 		return '(c)'
@@ -69,7 +69,7 @@ fn solve_a(input []string) int {
 		}
 	}
 	regex := '^' + build_regex(rules, '0', 0) + '$'
-	// println(regex)
+	println(regex)
 	re := pcre.new_regex(regex, 0) or { panic(err) }
 	for message in to_test {
 		re.match_str(message, 0, 0) or { continue }
@@ -100,10 +100,10 @@ fn solve_b(input []string) int {
 	regex := '^' + build_regex(rules, '0', 0) + '$'
 	// println(regex)
 	re := pcre.new_regex(regex, 0) or {
-		if err == 'Failed to compile regex' {
+		if err.str() == 'Failed to compile regex' {
 			println('PCRE cannot handle our regex, using python instead...')
 			command := 'python -c "import re; r = re.compile(\'$regex\'); print(len([x for x in $to_test if r.fullmatch(x)]))"'
-			result := os.exec(command) or { panic(err) }
+			result := os.execute(command)
 			return result.output.int()
 		}
 		panic(err)

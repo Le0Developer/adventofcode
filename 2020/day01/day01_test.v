@@ -18,7 +18,7 @@ fn test_solve_b() {
 
 fn test_badsolve_a() {
 	solve_a([0, 1, 2, 3, 4, 5, 6, 7]) or {
-		assert err == 'No solution found'
+		assert err.str() == 'No solution found'
 		return
 	}
 	assert false
@@ -26,7 +26,7 @@ fn test_badsolve_a() {
 
 fn test_badsolve_b() {
 	solve_b([0, 1, 2, 3, 4, 5, 6, 7]) or {
-		assert err == 'No solution found'
+		assert err.str() == 'No solution found'
 		return
 	}
 	assert false

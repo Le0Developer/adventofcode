@@ -25,12 +25,12 @@ fn parse(lines []string) []Policy {
 	for policy in lines {
 		parts := policy.split(' ')
 		value_part := parts[0]
-		char := parts[1][0]
+		char_ := parts[1][0]
 		password := parts[2]
 		value_parts := value_part.split('-')
 		value_0 := value_parts[0].int()
 		value_1 := value_parts[1].int()
-		policies << Policy{value_0, value_1, char, password}
+		policies << Policy{value_0, value_1, char_, password}
 	}
 	return policies
 }

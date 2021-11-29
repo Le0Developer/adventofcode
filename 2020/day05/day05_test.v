@@ -1,12 +1,12 @@
 module main
 
-fn solve_a_test() {
+fn test_solve_a() {
 	input := ['BFFFBBFRRR', 'FFFBBBFRRR', 'BBFFBBFRLL']
 	passes := parse(input)
 	assert solve_a(passes) == 820
 }
 
-fn solve_b_test() {
+fn test_solve_b() {
 	// TODO: get real data to test this
 	input := ['BFFFBBFRRR', 'FFFBBBFRRR', 'BBFFBBFRLL']
 	passes := parse(input)

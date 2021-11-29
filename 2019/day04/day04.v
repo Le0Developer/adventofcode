@@ -33,16 +33,16 @@ fn solve_b(input []string) int {
 	for i in lower_bounds .. upper_bound {
 		s := i.str()
 		mut valid := true
-		mut char := -1
+		mut char_ := -1
 		mut two_in_a_row := false
 		for j in 1 .. 6 {
 			if s[j] < s[j - 1] {
 				valid = false
 				break
-			} else if s[j] == s[j - 1] && char != s[j] && !two_in_a_row {
+			} else if s[j] == s[j - 1] && char_ != s[j] && !two_in_a_row {
 				two_in_a_row = true
-				char = s[j]
-			} else if s[j] == s[j - 1] && char == s[j] {
+				char_ = s[j]
+			} else if s[j] == s[j - 1] && char_ == s[j] {
 				two_in_a_row = false
 			}
 		}
