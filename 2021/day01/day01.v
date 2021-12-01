@@ -36,7 +36,7 @@ fn challenge_b(input_lines []string) ?i64 {
 
 fn main() {
 	mut fp := flag.new_flag_parser(os.args)
-	fp.application('AdventOfCode 202_ day __')
+	fp.application('AdventOfCode 2021 day 01')
 	fp.version('v0.1.0')
 	fp.skip_executable()
 	fp.limit_free_args_to_exactly(1) ?
