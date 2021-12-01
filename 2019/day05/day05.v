@@ -15,8 +15,16 @@ fn challenge_a(input_lines []string) ?i64 {
 	for {
 		instr := mem[pointer]
 		instrs := instr.str()
-		param_0 := if instrs.len >= 3 && instrs[instrs.len - 3] == `1` { ParamterMode.immediate } else { ParamterMode.position }
-		param_1 := if instrs.len >= 4 && instrs[instrs.len - 4] == `1` { ParamterMode.immediate } else { ParamterMode.position }
+		param_0 := if instrs.len >= 3 && instrs[instrs.len - 3] == `1` {
+			ParamterMode.immediate
+		} else {
+			ParamterMode.position
+		}
+		param_1 := if instrs.len >= 4 && instrs[instrs.len - 4] == `1` {
+			ParamterMode.immediate
+		} else {
+			ParamterMode.position
+		}
 		// param_2 := if instrs.len >= 5 && instrs[instrs.len - 5] == `1` { ParamterMode.immediate } else { ParamterMode.position }
 		match (instr % 100) {
 			1 {
@@ -51,7 +59,7 @@ fn challenge_a(input_lines []string) ?i64 {
 				break
 			}
 			else {
-				return error("invalid instruction: $instr at $pointer")
+				return error('invalid instruction: $instr at $pointer')
 			}
 		}
 	}
@@ -65,8 +73,16 @@ fn challenge_b(input_lines []string, input int) ?i64 {
 	for {
 		instr := mem[pointer]
 		instrs := instr.str()
-		param_0 := if instrs.len >= 3 && instrs[instrs.len - 3] == `1` { ParamterMode.immediate } else { ParamterMode.position }
-		param_1 := if instrs.len >= 4 && instrs[instrs.len - 4] == `1` { ParamterMode.immediate } else { ParamterMode.position }
+		param_0 := if instrs.len >= 3 && instrs[instrs.len - 3] == `1` {
+			ParamterMode.immediate
+		} else {
+			ParamterMode.position
+		}
+		param_1 := if instrs.len >= 4 && instrs[instrs.len - 4] == `1` {
+			ParamterMode.immediate
+		} else {
+			ParamterMode.position
+		}
 		// param_2 := if instrs.len >= 5 && instrs[instrs.len - 5] == `1` { ParamterMode.immediate } else { ParamterMode.position }
 		match (instr % 100) {
 			1 {
@@ -142,7 +158,7 @@ fn challenge_b(input_lines []string, input int) ?i64 {
 				break
 			}
 			else {
-				return error("invalid instruction: $instr at $pointer")
+				return error('invalid instruction: $instr at $pointer')
 			}
 		}
 	}

@@ -4,54 +4,76 @@ import flag
 import os
 
 fn challenge_a(input_lines []string) ?i64 {
-	mut connections := {'COM': 0}
+	mut connections := {
+		'COM': 0
+	}
 	mut total := 0
 	for {
 		mut changed := false
 		for line in input_lines {
 			parts := line.split(')')
-			if parts[0] !in connections || parts[1] in connections { continue }
+			if parts[0] !in connections || parts[1] in connections {
+				continue
+			}
 			value := connections[parts[0]] or { 0 } + 1
 			connections[parts[1]] = value
 			total += value
 			changed = true
 		}
-		if !changed { break }
+		if !changed {
+			break
+		}
 	}
 	return total
 }
 
 fn challenge_b(input_lines []string) ?i64 {
-	mut connections := {'COM': 0}
+	mut connections := {
+		'COM': 0
+	}
 	for {
 		mut changed := false
 		for line in input_lines {
 			parts := line.split(')')
-			if parts[0] !in connections || parts[1] in connections { continue }
+			if parts[0] !in connections || parts[1] in connections {
+				continue
+			}
 			value := connections[parts[0]] or { 0 } + 1
 			connections[parts[1]] = value
 			changed = true
 		}
-		if !changed { break }
+		if !changed {
+			break
+		}
 	}
 	// the strategy here is finding a common orbit with the least distance to COM
 	// then calculating the distance from that to each other
-	mut san := {'SAN': true}
+	mut san := {
+		'SAN': true
+	}
 	for {
 		mut changed := false
 		for line in input_lines {
 			parts := line.split(')')
-			if parts[0] in san || parts[1] !in san { continue }
+			if parts[0] in san || parts[1] !in san {
+				continue
+			}
 			san[parts[0]] = true
 			changed = true
 		}
-		if !changed { break }
+		if !changed {
+			break
+		}
 	}
-	mut you := {'YOU': true}
+	mut you := {
+		'YOU': true
+	}
 	for {
 		for line in input_lines {
 			parts := line.split(')')
-			if parts[0] in you || parts[1] !in you { continue }
+			if parts[0] in you || parts[1] !in you {
+				continue
+			}
 			if parts[0] in san {
 				dis_san := connections['SAN'] - connections[parts[0]] - 1
 				dis_you := connections['YOU'] - connections[parts[0]] - 1
