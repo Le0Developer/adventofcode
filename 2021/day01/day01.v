@@ -4,32 +4,32 @@ import flag
 import os
 
 fn challenge_a(input_lines []string) ?i64 {
-	mut previous := input_lines[0].int()
+	input_ints := input_lines.map(it.int())
+	mut previous := input_ints[0]
 	mut total := 0
-	for line in input_lines {
-		as_int := line.int()
-		if as_int > previous {
+	for line in input_ints {
+		if line > previous {
 			total++
 		}
-		previous = as_int
+		previous = line
 	}
 	return total
 }
 
 fn challenge_b(input_lines []string) ?i64 {
-	mut previous1 := input_lines[0].int()
-	mut previous2 := input_lines[1].int()
-	mut previous_sum := input_lines[0].int() + input_lines[1].int() + input_lines[2].int()
+	input_ints := input_lines.map(it.int())
+	mut previous1 := input_ints[0]
+	mut previous2 := input_ints[1]
+	mut previous_sum := input_ints[0] + input_ints[1] + input_ints[2]
 	mut total := 0
-	for line in input_lines[2..] {
-		as_int := line.int()
-		sum := previous1 + previous2 + as_int
+	for line in input_ints[2..] {
+		sum := previous1 + previous2 + line
 		if sum > previous_sum {
 			total++
 		}
 		previous_sum = sum
 		previous1 = previous2
-		previous2 = as_int
+		previous2 = line
 	}
 	return total
 }
