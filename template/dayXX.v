@@ -17,6 +17,7 @@ fn main() {
 	mut fp := flag.new_flag_parser(os.args)
 	fp.application('AdventOfCode 202_ day __')
 	fp.version('v0.1.0')
+	fp.skip_executable()
 	fp.limit_free_args_to_exactly(1) ?
 	is_b := fp.bool('b', `b`, false, 'b challenge')
 	// more options here
