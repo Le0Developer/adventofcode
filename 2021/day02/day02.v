@@ -18,7 +18,9 @@ fn challenge_a(input_lines []string) ?i64 {
 			'up' {
 				dept -= parts[1].int()
 			}
-			else { panic('unexpected instruction: $line') }
+			else {
+				panic('unexpected instruction: $line')
+			}
 		}
 	}
 	return position * dept
@@ -41,7 +43,9 @@ fn challenge_b(input_lines []string) ?i64 {
 			'up' {
 				aim -= parts[1].int()
 			}
-			else { panic('unexpected instruction: $line') }
+			else {
+				panic('unexpected instruction: $line')
+			}
 		}
 	}
 	return position * dept
