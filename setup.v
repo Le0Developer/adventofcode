@@ -23,18 +23,16 @@ fn main() {
 		return
 	}
 
-	if !os.exists(year) {
-		os.mkdir(year) ?
-	}
-	if !os.exists('$year/day$day') {
-		os.mkdir('$year/day$day') ?
+	if !os.exists('$year/day$day/v') {
+		os.mkdir_all('$year/day$day/v') ?
 	}
 
-	day_xx := ($embed_file('template/dayXX.v')).to_string()
+	day_xx := ($embed_file('templates/v/dayXX.v')).to_string()
 	data := day_xx.replace('AdventOfCode 202_ day __', 'AdventOfCode $year day $day')
-	os.write_file('$year/day$day/day${day}.v', data) ?
-	day_xx_test := ($embed_file('template/dayXX_test.v')).to_string()
-	os.write_file('$year/day$day/day${day}_test.v', day_xx_test) ?
+	os.write_file('$year/day$day/v/day${day}.v', data) ?
+	day_xx_test := ($embed_file('templates/v/dayXX_test.v')).to_string()
+	os.write_file('$year/day$day/v/day${day}_test.v', day_xx_test) ?
+	os.write_file('$year/day$day/v/input.txt', "") ?
 
 	mut readme := os.read_lines('README.md') ?
 	mut table_start := -1
@@ -45,7 +43,8 @@ fn main() {
 			if pretty_day[0] == `0` {
 				pretty_day = ' ' + pretty_day[1..2]
 			}
-			readme[i] = '|  $year  |    $pretty_day/25    |   V           |'
+			languages := line.split('|')[3].trim_space()
+			readme[i] = '|  $year  |    $pretty_day/25    |  ${" ".repeat(8 - languages.len)}$languages  |'
 			found = true
 			break
 		}

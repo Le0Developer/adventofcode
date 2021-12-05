@@ -1,9 +1,9 @@
 
 # Advent of Code
 
-Here are my solutions for Advent of Code.
+Welcome to the repository with me trying to solve Advent of Code challenges.
 
-I'm using this as a learning experience to get to know V better.
+Using this to learn languages. 
 
 ## Events
 
@@ -18,3 +18,10 @@ All of them. Sometime.
 |  2017  |     0/25    |   -           |
 |  2016  |     0/25    |   -           |
 |  2015  |     0/25    |   -           |
+
+
+## Part A and B?
+
+I refer to Part 1 as A and Part 2 as B.
+
+Why? I simply prefer it. ¯\_(ツ)_/¯
