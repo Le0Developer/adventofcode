@@ -32,7 +32,7 @@ fn main() {
 	os.write_file('$year/day$day/v/day${day}.v', data) ?
 	day_xx_test := ($embed_file('templates/v/dayXX_test.v')).to_string()
 	os.write_file('$year/day$day/v/day${day}_test.v', day_xx_test) ?
-	os.write_file('$year/day$day/v/input.txt', "") ?
+	os.write_file('$year/day$day/v/input.txt', '') ?
 
 	mut readme := os.read_lines('README.md') ?
 	mut table_start := -1
@@ -44,7 +44,7 @@ fn main() {
 				pretty_day = ' ' + pretty_day[1..2]
 			}
 			languages := line.split('|')[3].trim_space()
-			readme[i] = '|  $year  |    $pretty_day/25    |  ${" ".repeat(8 - languages.len)}$languages  |'
+			readme[i] = '|  $year  |    $pretty_day/25    |  ${' '.repeat(8 - languages.len)}$languages  |'
 			found = true
 			break
 		}
