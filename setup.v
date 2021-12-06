@@ -44,7 +44,7 @@ fn main() {
 				pretty_day = ' ' + pretty_day[1..2]
 			}
 			languages := line.split('|')[3].trim_space()
-			readme[i] = '|  $year  |    $pretty_day/25    |  ${' '.repeat(8 - languages.len)}$languages  |'
+			readme[i] = '|  $year  |    $pretty_day/25    |   $languages${' '.repeat(10 - languages.len)}  |'
 			found = true
 			break
 		}
