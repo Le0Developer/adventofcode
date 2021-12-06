@@ -9,7 +9,7 @@ fn solve_challenge(cycles int, input []int) u64 {
 	for val in input {
 		states[val]++
 	}
-	for cycle in 0..cycles {
+	for cycle in 0 .. cycles {
 		current := states[cycle % 7]
 		states[cycle % 7] += pending[cycle % 2]
 		pending[cycle % 2] = current
