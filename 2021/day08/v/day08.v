@@ -48,36 +48,20 @@ fn challenge_b(input_lines []string) ?i64 {
 			}
 			sidemask := match group.len {
 				2 { // can only be 1
-					// possible[Side.c] &= mask
-					// possible[Side.f] &= mask
 					0b0010010
 				}
 				3 { // can only be 7
-					// possible[Side.a] &= mask
-					// possible[Side.c] &= mask
-					// possible[Side.f] &= mask
 					0b1010010
 				}
 				4 { // can only be 4
-					// possible[Side.b] &= mask
-					// possible[Side.c] &= mask
-					// possible[Side.d] &= mask
-					// possible[Side.f] &= mask
 					0b0111010
 				}
 				5 { // can be: 2, 3, 5
 					// they only share the top, mid and bottom sides
-					// possible[Side.a] &= mask
-					// possible[Side.d] &= mask
-					// possible[Side.g] &= mask
 					0b1001001
 				}
 				6 { // can be: 0, 6, 9
 					// they share every side except two
-					// possible[Side.a] &= mask
-					// possible[Side.b] &= mask
-					// possible[Side.f] &= mask
-					// possible[Side.g] &= mask
 					0b1100011
 				}
 				7 { // can only be 8
@@ -88,12 +72,9 @@ fn challenge_b(input_lines []string) ?i64 {
 					panic('impossible group: $group')
 				}
 			}
-			is_clear := group.len == 2 || group.len == 3 || group.len == 4 || group.len == 7
 			for side in 0 .. 7 {
 				if sidemask & (1 << side) > 0 {
 					possible[side] &= mask
-				} else if is_clear {
-					// possible[side] ^= possible[side] & mask
 				}
 			}
 		}
@@ -135,7 +116,7 @@ fn challenge_b(input_lines []string) ?i64 {
 				0b1011101 { // 2
 					solution << '2'
 				}
-				0b1011011, 0b1101101 { // 3
+				0b1011011 { // 3
 					solution << '3'
 				}
 				0b0111010 { // 4
