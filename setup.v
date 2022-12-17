@@ -5,7 +5,7 @@ fn main() {
 	mut fp := flag.new_flag_parser(os.args)
 	fp.version('v0.1.0')
 	fp.skip_executable()
-	fp.limit_free_args_to_exactly(2)?
+	fp.limit_free_args_to_exactly(2)!
 	additional_args := fp.finalize() or {
 		eprintln(err)
 		println(fp.usage())
@@ -24,17 +24,17 @@ fn main() {
 	}
 
 	if !os.exists('${year}/day${day}/v') {
-		os.mkdir_all('${year}/day${day}/v')?
+		os.mkdir_all('${year}/day${day}/v')!
 	}
 
 	day_xx := ($embed_file('templates/v/dayXX.v')).to_string()
 	data := day_xx.replace('AdventOfCode 202_ day __', 'AdventOfCode ${year} day ${day}')
-	os.write_file('${year}/day${day}/v/day${day}.v', data)?
+	os.write_file('${year}/day${day}/v/day${day}.v', data)!
 	day_xx_test := ($embed_file('templates/v/dayXX_test.v')).to_string()
-	os.write_file('${year}/day${day}/v/day${day}_test.v', day_xx_test)?
-	os.write_file('${year}/day${day}/v/input.txt', '')?
+	os.write_file('${year}/day${day}/v/day${day}_test.v', day_xx_test)!
+	os.write_file('${year}/day${day}/v/input.txt', '')!
 
-	mut readme := os.read_lines('README.md')?
+	mut readme := os.read_lines('README.md')!
 	mut table_start := -1
 	mut found := false
 	for i, line in readme {
@@ -61,5 +61,5 @@ fn main() {
 	}
 
 	readme << '' // read_lines removes final newline
-	os.write_file('README.md', readme.join_lines())?
+	os.write_file('README.md', readme.join_lines())!
 }
