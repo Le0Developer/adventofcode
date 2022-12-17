@@ -7,10 +7,9 @@ fn challenge_a(input_lines []string) ?string {
 	mut stacks := [][]string{}
 	mut initial_stacking := true
 	for line in input_lines {
-		if line == ''  {
+		if line == '' {
 			initial_stacking = false
-		}
-		else if initial_stacking {
+		} else if initial_stacking {
 			for i := 1; i < line.len; i += 4 {
 				idx := (i - 1) / 4
 				for idx >= stacks.len {
@@ -25,13 +24,13 @@ fn challenge_a(input_lines []string) ?string {
 			amount := instructions[1].int()
 			source := instructions[3].int()
 			destination := instructions[5].int()
-			
+
 			for _ in 0 .. amount {
 				stacks[destination - 1] << stacks[source - 1].pop()
 			}
 		}
 	}
-	mut res := ""
+	mut res := ''
 	for stack in stacks {
 		res += stack.last()
 	}
@@ -42,10 +41,9 @@ fn challenge_b(input_lines []string) ?string {
 	mut stacks := [][]string{}
 	mut initial_stacking := true
 	for line in input_lines {
-		if line == ''  {
+		if line == '' {
 			initial_stacking = false
-		}
-		else if initial_stacking {
+		} else if initial_stacking {
 			for i := 1; i < line.len; i += 4 {
 				idx := (i - 1) / 4
 				for idx >= stacks.len {
@@ -60,14 +58,14 @@ fn challenge_b(input_lines []string) ?string {
 			amount := instructions[1].int()
 			source := instructions[3].int()
 			destination := instructions[5].int()
-			
+
 			current := stacks[destination - 1].len
 			for _ in 0 .. amount {
 				stacks[destination - 1].insert(current, stacks[source - 1].pop())
 			}
 		}
 	}
-	mut res := ""
+	mut res := ''
 	for stack in stacks {
 		res += stack.last()
 	}

@@ -29,7 +29,9 @@ fn challenge_b(input_lines []string) ?i64 {
 			}
 			found_chars[line[j]] = true
 		}
-		if found { return i + 14 }
+		if found {
+			return i + 14
+		}
 	}
 	return -1
 }

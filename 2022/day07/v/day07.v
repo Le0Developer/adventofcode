@@ -69,7 +69,9 @@ fn challenge_b(input_lines []string) ?i64 {
 		}
 	}
 	mut total := 0
-	for _, size in files { total += size }
+	for _, size in files {
+		total += size
+	}
 	to_free := 30000000 - 70000000 + total
 	mut lowest := 1 << 31 - 1
 	for directory in dirs {
