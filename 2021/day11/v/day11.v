@@ -8,8 +8,8 @@ fn challenge_a(input_lines []string) ?i64 {
 	mut total := 0
 	for line in input_lines {
 		mut row := []byte{}
-		for char in line {
-			row << char - 0x30
+		for character in line {
+			row << character - 0x30
 		}
 		flashers << row
 	}
@@ -80,8 +80,8 @@ fn challenge_b(input_lines []string) ?i64 {
 	mut flashers := [][]byte{}
 	for line in input_lines {
 		mut row := []byte{}
-		for char in line {
-			row << char - 0x30
+		for character in line {
+			row << character - 0x30
 		}
 		flashers << row
 	}
@@ -139,7 +139,7 @@ fn main() {
 		return
 	}
 	input_filename := additional_args[0]
-	input_lines := os.read_lines(input_filename) ?
+	input_lines := os.read_lines(input_filename) !
 	solution := if !is_b { challenge_a(input_lines) ? } else { challenge_b(input_lines) ? }
 	println('Solution is $solution')
 }

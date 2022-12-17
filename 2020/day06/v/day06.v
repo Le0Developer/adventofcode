@@ -11,9 +11,9 @@ fn solve_a(lines []string) int {
 			solution += current.len
 			current.clear()
 		} else {
-			for char in line {
-				if char !in current {
-					current << char
+			for character in line {
+				if character !in current {
+					current << character
 				}
 			}
 		}
@@ -38,8 +38,8 @@ fn solve_b(lines []string) int {
 			current = map[string]int{}
 			people = 0
 		} else {
-			for char in line {
-				str := char.str()
+			for character in line {
+				str := character.str()
 				if str !in current {
 					current[str] = 0
 				}
@@ -60,7 +60,7 @@ fn solve_b(lines []string) int {
 
 fn main() {
 	input_file := os.args[1]
-	input := os.read_lines(input_file) ?
+	input := os.read_lines(input_file) !
 	mut solution := 0
 	if '-b' in cmdline.only_options(os.args) {
 		solution = solve_b(input)

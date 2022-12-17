@@ -99,7 +99,7 @@ fn main() {
 		return
 	}
 	input_filename := additional_args[0]
-	input_lines := os.read_lines(input_filename) ?
+	input_lines := os.read_lines(input_filename) !
 	solution := if !is_b { challenge_a(input_lines) ? } else { challenge_b(input_lines) ? }
 	println('Solution is $solution')
 }

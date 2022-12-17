@@ -55,7 +55,7 @@ fn solve_b(input []string) int {
 
 fn main() {
 	input_file := os.args[1]
-	input := os.read_lines(input_file) ?
+	input := os.read_lines(input_file) !
 	mut solution := 0
 	if '-b' in cmdline.only_options(os.args) {
 		solution = solve_b(input)

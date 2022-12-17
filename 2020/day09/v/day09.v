@@ -41,7 +41,7 @@ fn solve_b(values []int, preamble int) int {
 
 fn main() {
 	input_file := os.args[1]
-	input := os.read_lines(input_file) ?
+	input := os.read_lines(input_file) !
 	mut values := []int{}
 	for x in input {
 		values << x.int()

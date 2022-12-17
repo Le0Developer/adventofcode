@@ -27,7 +27,7 @@ fn solve_b(entries []int) ?int {
 
 fn main() {
 	input_file := os.args[1]
-	input := os.read_lines(input_file) ?
+	input := os.read_lines(input_file) !
 	entries := input.map(it.int())
 	mut solution := 0
 	if '-b' in cmdline.only_options(os.args) {

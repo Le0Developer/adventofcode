@@ -73,7 +73,7 @@ fn solve_b(bags map[string]map[string]int) int {
 
 fn main() {
 	input_file := os.args[1]
-	input := os.read_lines(input_file) ?
+	input := os.read_lines(input_file) !
 	bags := parse(input)
 	mut solution := 0
 	if '-b' in cmdline.only_options(os.args) {

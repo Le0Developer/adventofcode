@@ -12,8 +12,8 @@ fn parse(input []string) [][]int {
 	mut first := [][]int{}
 	for line in input {
 		mut row := []int{}
-		for char in line {
-			if char == `#` {
+		for character in line {
+			if character == `#` {
 				row << active
 			} else {
 				row << inactive
@@ -269,7 +269,7 @@ fn solve_b(input []string) int {
 
 fn main() {
 	input_file := os.args[1]
-	input := os.read_lines(input_file) ?
+	input := os.read_lines(input_file) !
 	mut solution := 0
 	if '-b' in cmdline.only_options(os.args) {
 		solution = solve_b(input)

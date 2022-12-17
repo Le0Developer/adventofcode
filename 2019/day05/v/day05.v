@@ -26,7 +26,7 @@ fn challenge_a(input_lines []string) ?i64 {
 			ParamterMode.position
 		}
 		// param_2 := if instrs.len >= 5 && instrs[instrs.len - 5] == `1` { ParamterMode.immediate } else { ParamterMode.position }
-		match (instr % 100) {
+		match instr % 100 {
 			1 {
 				source1 := mem[pointer + 1]
 				source2 := mem[pointer + 2]
@@ -84,7 +84,7 @@ fn challenge_b(input_lines []string, input int) ?i64 {
 			ParamterMode.position
 		}
 		// param_2 := if instrs.len >= 5 && instrs[instrs.len - 5] == `1` { ParamterMode.immediate } else { ParamterMode.position }
-		match (instr % 100) {
+		match instr % 100 {
 			1 {
 				source1 := mem[pointer + 1]
 				source2 := mem[pointer + 2]
@@ -170,7 +170,7 @@ fn main() {
 	fp.application('AdventOfCode 2019 day 05')
 	fp.version('v0.1.0')
 	fp.skip_executable()
-	fp.limit_free_args_to_exactly(1) ?
+	fp.limit_free_args_to_exactly(1) !
 	is_b := fp.bool('b', `b`, false, 'b challenge')
 	// more options here
 	additional_args := fp.finalize() or {
@@ -179,7 +179,7 @@ fn main() {
 		return
 	}
 	input_filename := additional_args[0]
-	input_lines := os.read_lines(input_filename) ?
+	input_lines := os.read_lines(input_filename) !
 	solution := if !is_b { challenge_a(input_lines) ? } else { challenge_b(input_lines, 5) ? }
 	println('Solution is $solution')
 }

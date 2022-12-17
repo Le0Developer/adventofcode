@@ -54,7 +54,7 @@ fn solve_b(mut values []int) u64 {
 
 fn main() {
 	input_file := os.args[1]
-	input := os.read_lines(input_file) ?
+	input := os.read_lines(input_file) !
 	mut values := []int{}
 	for x in input {
 		values << x.int()

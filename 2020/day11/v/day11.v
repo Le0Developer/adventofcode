@@ -13,8 +13,8 @@ fn parse(input []string) [][]int {
 	mut seats := [][]int{}
 	for line in input {
 		mut row := []int{}
-		for char in line {
-			if char == `L` {
+		for character in line {
+			if character == `L` {
 				row << empty
 			} else {
 				row << floor
@@ -225,7 +225,7 @@ fn solve_b(seats_ [][]int) int {
 
 fn main() {
 	input_file := os.args[1]
-	input := os.read_lines(input_file) ?
+	input := os.read_lines(input_file) !
 	seats := parse(input)
 	mut solution := 0
 	if '-b' in cmdline.only_options(os.args) {

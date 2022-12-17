@@ -5,12 +5,12 @@ import os.cmdline
 
 fn parse(line string) []i64 {
 	mut result := []i64{}
-	for char in line {
-		if char != ` ` {
-			if char >= 0x30 && char <= 0x39 {
-				result << i64(char - 0x30)
+	for character in line {
+		if character != ` ` {
+			if character >= 0x30 && character <= 0x39 {
+				result << i64(character - 0x30)
 			} else {
-				result << -i64(char)
+				result << -i64(character)
 			}
 		}
 	}
@@ -152,7 +152,7 @@ fn solve_b(input []string) i64 {
 
 fn main() {
 	input_file := os.args[1]
-	input := os.read_lines(input_file) ?
+	input := os.read_lines(input_file) !
 	mut solution := i64(0)
 	if '-b' in cmdline.only_options(os.args) {
 		solution = solve_b(input)

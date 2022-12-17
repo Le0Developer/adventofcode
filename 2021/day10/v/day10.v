@@ -28,14 +28,14 @@ fn challenge_a(input_lines []string) ?i64 {
 	mut total := 0
 	for line in input_lines {
 		mut stack := []byte{}
-		for char in line {
-			if char in character_groups {
-				stack << character_groups[char]
-			} else if char == stack.last() {
+		for character in line {
+			if character in character_groups {
+				stack << character_groups[character]
+			} else if character == stack.last() {
 				stack.delete_last()
 			} else {
-				// println('illegal $char, expected ${stack.last()}')
-				total += points_a[char]
+				// println('illegal $character, expected ${stack.last()}')
+				total += points_a[character]
 				break
 			}
 		}
@@ -48,10 +48,10 @@ fn challenge_b(input_lines []string) ?i64 {
 	for line in input_lines {
 		mut stack := []byte{}
 		mut corrupted := false
-		for char in line {
-			if char in character_groups {
-				stack << character_groups[char]
-			} else if char == stack.last() {
+		for character in line {
+			if character in character_groups {
+				stack << character_groups[character]
+			} else if character == stack.last() {
 				stack.delete_last()
 			} else {
 				corrupted = true
@@ -85,7 +85,7 @@ fn main() {
 		return
 	}
 	input_filename := additional_args[0]
-	input_lines := os.read_lines(input_filename) ?
+	input_lines := os.read_lines(input_filename) !
 	solution := if !is_b { challenge_a(input_lines) ? } else { challenge_b(input_lines) ? }
 	println('Solution is $solution')
 }

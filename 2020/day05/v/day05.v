@@ -7,10 +7,10 @@ fn parse(lines []string) [][][]bool {
 	mut passes := [][][]bool{}
 	for line in lines {
 		mut pass := [][]bool{len: 2, init: []bool{}}
-		for char in line {
-			match char {
-				`F`, `B` { pass[0] << char == `B` }
-				`R`, `L` { pass[1] << char == `R` }
+		for character in line {
+			match character {
+				`F`, `B` { pass[0] << character == `B` }
+				`R`, `L` { pass[1] << character == `R` }
 				else { panic('invalid input') }
 			}
 		}
@@ -64,7 +64,7 @@ fn solve_b(passes [][][]bool) int {
 
 fn main() {
 	input_file := os.args[1]
-	input := os.read_lines(input_file) ?
+	input := os.read_lines(input_file) !
 	passes := parse(input)
 	mut solution := 0
 	if '-b' in cmdline.only_options(os.args) {

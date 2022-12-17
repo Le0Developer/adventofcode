@@ -59,7 +59,7 @@ fn solve2(input []string, until int) int {
 
 fn main() {
 	input_file := os.args[1]
-	input := os.read_lines(input_file) ?
+	input := os.read_lines(input_file) !
 	mut solution := 0
 	if '-b' in cmdline.only_options(os.args) {
 		// takes ~30 seconds with the challenge

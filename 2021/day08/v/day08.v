@@ -43,8 +43,8 @@ fn challenge_b(input_lines []string) ?i64 {
 		groups := line.all_before('|').trim_space().split(' ')
 		for group in groups {
 			mut mask := byte(0)
-			for char in group {
-				mask |= 1 << int(side_map[char])
+			for character in group {
+				mask |= 1 << int(side_map[character])
 			}
 			sidemask := match group.len {
 				2 { // can only be 1
@@ -103,8 +103,8 @@ fn challenge_b(input_lines []string) ?i64 {
 		mut solution := []string{}
 		for group in output {
 			mut mask := byte(0)
-			for char in group {
-				mask |= 1 << solutionmap[int(side_map[char])]
+			for character in group {
+				mask |= 1 << solutionmap[int(side_map[character])]
 			}
 			match mask {
 				0b1110111 { // 0
@@ -161,7 +161,7 @@ fn main() {
 		return
 	}
 	input_filename := additional_args[0]
-	input_lines := os.read_lines(input_filename) ?
+	input_lines := os.read_lines(input_filename) !
 	solution := if !is_b { challenge_a(input_lines) ? } else { challenge_b(input_lines) ? }
 	println('Solution is $solution')
 }
