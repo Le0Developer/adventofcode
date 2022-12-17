@@ -2,7 +2,7 @@ module main
 
 fn test_challenge_a() ? {
 	input_lines := ['1002,4,3,4,33']
-	assert (challenge_a(input_lines) ?) == -1
+	assert (challenge_a(input_lines)?) == -1
 }
 
 struct TestData {
@@ -26,9 +26,9 @@ fn test_challenge_b() ? {
 	for test in test_data {
 		println(test)
 		input_lines := [test.input]
-		assert (challenge_b(input_lines, 0) ?) == test.input_0
-		assert (challenge_b(input_lines, 1) ?) == test.input_1
-		assert (challenge_b(input_lines, 8) ?) == test.input_8
-		assert (challenge_b(input_lines, 9) ?) == test.input_9
+		assert (challenge_b(input_lines, 0)?) == test.input_0
+		assert (challenge_b(input_lines, 1)?) == test.input_1
+		assert (challenge_b(input_lines, 8)?) == test.input_8
+		assert (challenge_b(input_lines, 9)?) == test.input_9
 	}
 }

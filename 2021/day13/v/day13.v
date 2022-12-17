@@ -16,12 +16,12 @@ fn do_the_thing(input_lines []string, max_folds int, display_last bool) ?i64 {
 			fast_raw_dots[line] = true
 		}
 	}
-	max_x := 1 + arrays.max(raw_dots.map(it.split(',')[0].int())) ?
-	max_y := 1 + arrays.max(raw_dots.map(it.split(',')[1].int())) ?
+	max_x := 1 + arrays.max(raw_dots.map(it.split(',')[0].int()))?
+	max_y := 1 + arrays.max(raw_dots.map(it.split(',')[1].int()))?
 	mut dots := [][]bool{len: max_y, init: []bool{cap: max_x}}
 	for y in 0 .. max_y {
 		for x in 0 .. max_x {
-			dots[y] << '$x,$y' in fast_raw_dots // ~10 times faster than raw_dots
+			dots[y] << '${x},${y}' in fast_raw_dots // ~10 times faster than raw_dots
 			// print(if row.last() { '#' } else { '.' })
 		}
 		// println('')
@@ -62,7 +62,7 @@ fn do_the_thing(input_lines []string, max_folds int, display_last bool) ?i64 {
 		}
 		println('')
 	}
-	return i64(arrays.sum(dots.map(arrays.sum(it.map(int(it))) ?)) ?)
+	return i64(arrays.sum(dots.map(arrays.sum(it.map(int(it)))?))?)
 }
 
 fn challenge_a(input_lines []string) ?i64 {
@@ -78,7 +78,7 @@ fn main() {
 	fp.application('AdventOfCode 2021 day 13')
 	fp.version('v0.1.0')
 	fp.skip_executable()
-	fp.limit_free_args_to_exactly(1) ?
+	fp.limit_free_args_to_exactly(1)?
 	is_b := fp.bool('b', `b`, false, 'b challenge')
 	// more options here
 	additional_args := fp.finalize() or {
@@ -87,7 +87,7 @@ fn main() {
 		return
 	}
 	input_filename := additional_args[0]
-	input_lines := os.read_lines(input_filename) !
-	solution := if !is_b { challenge_a(input_lines) ? } else { challenge_b(input_lines) ? }
-	println('Solution is $solution')
+	input_lines := os.read_lines(input_filename)!
+	solution := if !is_b { challenge_a(input_lines)? } else { challenge_b(input_lines)? }
+	println('Solution is ${solution}')
 }

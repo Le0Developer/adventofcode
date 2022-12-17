@@ -47,20 +47,20 @@ fn find_basins(input_lines []string, x int, y int, mut basins map[string]bool) {
 	top := if y > 0 { input_lines[y - 1][x] - 0x30 } else { 10 }
 	bottom := if y + 1 < input_lines.len { input_lines[y + 1][x] - 0x30 } else { 10 }
 
-	if left > current && left < 9 && '$y:${x - 1}' !in basins {
-		basins['$y:${x - 1}'] = true
+	if left > current && left < 9 && '${y}:${x - 1}' !in basins {
+		basins['${y}:${x - 1}'] = true
 		find_basins(input_lines, x - 1, y, mut basins)
 	}
-	if right > current && right < 9 && '$y:${x + 1}' !in basins {
-		basins['$y:${x + 1}'] = true
+	if right > current && right < 9 && '${y}:${x + 1}' !in basins {
+		basins['${y}:${x + 1}'] = true
 		find_basins(input_lines, x + 1, y, mut basins)
 	}
-	if top > current && top < 9 && '${y - 1}:$x' !in basins {
-		basins['${y - 1}:$x'] = true
+	if top > current && top < 9 && '${y - 1}:${x}' !in basins {
+		basins['${y - 1}:${x}'] = true
 		find_basins(input_lines, x, y - 1, mut basins)
 	}
-	if bottom > current && bottom < 9 && '${y + 1}:$x' !in basins {
-		basins['${y + 1}:$x'] = true
+	if bottom > current && bottom < 9 && '${y + 1}:${x}' !in basins {
+		basins['${y + 1}:${x}'] = true
 		find_basins(input_lines, x, y + 1, mut basins)
 	}
 }
@@ -70,7 +70,7 @@ fn main() {
 	fp.application('AdventOfCode 2021 day 09')
 	fp.version('v0.1.0')
 	fp.skip_executable()
-	fp.limit_free_args_to_exactly(1) ?
+	fp.limit_free_args_to_exactly(1)?
 	is_b := fp.bool('b', `b`, false, 'b challenge')
 	// more options here
 	additional_args := fp.finalize() or {
@@ -79,7 +79,7 @@ fn main() {
 		return
 	}
 	input_filename := additional_args[0]
-	input_lines := os.read_lines(input_filename) !
-	solution := if !is_b { challenge_a(input_lines) ? } else { challenge_b(input_lines) ? }
-	println('Solution is $solution')
+	input_lines := os.read_lines(input_filename)!
+	solution := if !is_b { challenge_a(input_lines)? } else { challenge_b(input_lines)? }
+	println('Solution is ${solution}')
 }

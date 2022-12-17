@@ -52,14 +52,14 @@ fn intcoder(input_lines []string, input []int, phase int) ?int {
 					return error(last_out.str())
 				}
 				mem[dest] = if input_id == 0 { phase } else { input[input_id - 1] }
-				println('input $input_id ${mem[dest]}')
+				println('input ${input_id} ${mem[dest]}')
 				input_id++
 				pointer += 2
 			}
 			4 {
 				source1 := mem[pointer + 1]
 				value1 := if param_0 == .immediate { source1 } else { mem[source1] }
-				println('output $value1')
+				println('output ${value1}')
 				last_out = value1
 				pointer += 2
 			}
@@ -108,7 +108,7 @@ fn intcoder(input_lines []string, input []int, phase int) ?int {
 				break
 			}
 			else {
-				return error('invalid instruction: $instr at $pointer')
+				return error('invalid instruction: ${instr} at ${pointer}')
 			}
 		}
 	}
@@ -136,7 +136,7 @@ fn intcoder_b_phase(input_lines []string, phase_a int, phase_b int, phase_c int,
 			signals_b << err.str().int()
 			(-1)
 		}
-		println('a $value')
+		println('a ${value}')
 		if value != -1 {
 			signals_b << value
 		}
@@ -144,7 +144,7 @@ fn intcoder_b_phase(input_lines []string, phase_a int, phase_b int, phase_c int,
 			signals_c << err.str().int()
 			(-1)
 		}
-		println('b $value')
+		println('b ${value}')
 		if value != -1 {
 			signals_c << value
 		}
@@ -152,7 +152,7 @@ fn intcoder_b_phase(input_lines []string, phase_a int, phase_b int, phase_c int,
 			signals_d << err.str().int()
 			(-1)
 		}
-		println('c $value')
+		println('c ${value}')
 		if value != -1 {
 			signals_d << value
 		}
@@ -160,7 +160,7 @@ fn intcoder_b_phase(input_lines []string, phase_a int, phase_b int, phase_c int,
 			signals_e << err.str().int()
 			(-1)
 		}
-		println('d $value')
+		println('d ${value}')
 		if value != -1 {
 			signals_e << value
 		}
@@ -171,7 +171,7 @@ fn intcoder_b_phase(input_lines []string, phase_a int, phase_b int, phase_c int,
 			signals_a << err.str().int()
 			(-1)
 		}
-		println('e $value')
+		println('e ${value}')
 		if value != -1 {
 			break
 		}
@@ -250,7 +250,7 @@ fn main() {
 	fp.application('AdventOfCode 2019 day 07')
 	fp.version('v0.1.0')
 	fp.skip_executable()
-	fp.limit_free_args_to_exactly(1) !
+	fp.limit_free_args_to_exactly(1)!
 	is_b := fp.bool('b', `b`, false, 'b challenge')
 	// more options here
 	additional_args := fp.finalize() or {
@@ -259,7 +259,7 @@ fn main() {
 		return
 	}
 	input_filename := additional_args[0]
-	input_lines := os.read_lines(input_filename) !
-	solution := if !is_b { challenge_a(input_lines) ? } else { challenge_b(input_lines) ? }
-	println('Solution is $solution')
+	input_lines := os.read_lines(input_filename)!
+	solution := if !is_b { challenge_a(input_lines)? } else { challenge_b(input_lines)? }
+	println('Solution is ${solution}')
 }

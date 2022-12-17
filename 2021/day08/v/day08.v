@@ -69,7 +69,7 @@ fn challenge_b(input_lines []string) ?i64 {
 					all_sides
 				}
 				else {
-					panic('impossible group: $group')
+					panic('impossible group: ${group}')
 				}
 			}
 			for side in 0 .. 7 {
@@ -152,7 +152,7 @@ fn main() {
 	fp.application('AdventOfCode 2021 day 08')
 	fp.version('v0.1.0')
 	fp.skip_executable()
-	fp.limit_free_args_to_exactly(1) ?
+	fp.limit_free_args_to_exactly(1)?
 	is_b := fp.bool('b', `b`, false, 'b challenge')
 	// more options here
 	additional_args := fp.finalize() or {
@@ -161,7 +161,7 @@ fn main() {
 		return
 	}
 	input_filename := additional_args[0]
-	input_lines := os.read_lines(input_filename) !
-	solution := if !is_b { challenge_a(input_lines) ? } else { challenge_b(input_lines) ? }
-	println('Solution is $solution')
+	input_lines := os.read_lines(input_filename)!
+	solution := if !is_b { challenge_a(input_lines)? } else { challenge_b(input_lines)? }
+	println('Solution is ${solution}')
 }

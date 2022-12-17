@@ -14,7 +14,7 @@ fn challenge_a(input_lines []string) ?i64 {
 				low, high = high, low
 			}
 			for i in low .. high + 1 {
-				mapped['$i:${parts[0]}']++
+				mapped['${i}:${parts[0]}']++
 			}
 		} else if parts[1] == parts[4] { // horizontal
 			mut low := parts[0].int()
@@ -23,7 +23,7 @@ fn challenge_a(input_lines []string) ?i64 {
 				low, high = high, low
 			}
 			for i in low .. high + 1 {
-				mapped['${parts[1]}:$i']++
+				mapped['${parts[1]}:${i}']++
 			}
 		}
 	}
@@ -56,11 +56,11 @@ fn challenge_b(input_lines []string) ?i64 {
 			step_y = if end_y > start_y { 1 } else { -1 }
 		}
 		for start_x != end_x || start_y != end_y {
-			mapped['$start_x:$start_y']++
+			mapped['${start_x}:${start_y}']++
 			start_x += step_x
 			start_y += step_y
 		}
-		mapped['$end_x:$end_y']++
+		mapped['${end_x}:${end_y}']++
 	}
 	mut total := 0
 	for _, value in mapped {
@@ -76,7 +76,7 @@ fn main() {
 	fp.application('AdventOfCode 2021 day 05')
 	fp.version('v0.1.0')
 	fp.skip_executable()
-	fp.limit_free_args_to_exactly(1) ?
+	fp.limit_free_args_to_exactly(1)?
 	is_b := fp.bool('b', `b`, false, 'b challenge')
 	// more options here
 	additional_args := fp.finalize() or {
@@ -85,7 +85,7 @@ fn main() {
 		return
 	}
 	input_filename := additional_args[0]
-	input_lines := os.read_lines(input_filename) !
-	solution := if !is_b { challenge_a(input_lines) ? } else { challenge_b(input_lines) ? }
-	println('Solution is $solution')
+	input_lines := os.read_lines(input_filename)!
+	solution := if !is_b { challenge_a(input_lines)? } else { challenge_b(input_lines)? }
+	println('Solution is ${solution}')
 }

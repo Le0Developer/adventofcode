@@ -22,7 +22,7 @@ fn test_challenge_a() ? {
 		'22 11 13  6  5',
 		' 2  0 12  3  7',
 	]
-	assert (challenge_a(input_lines) ?) == 4512
+	assert (challenge_a(input_lines)?) == 4512
 }
 
 fn test_challenge_b() ? {
@@ -47,5 +47,5 @@ fn test_challenge_b() ? {
 		'22 11 13  6  5',
 		' 2  0 12  3  7',
 	]
-	assert (challenge_b(input_lines) ?) == 1924
+	assert (challenge_b(input_lines)?) == 1924
 }

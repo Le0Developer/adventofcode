@@ -54,16 +54,16 @@ fn solve_b(mut values []int) u64 {
 
 fn main() {
 	input_file := os.args[1]
-	input := os.read_lines(input_file) !
+	input := os.read_lines(input_file)!
 	mut values := []int{}
 	for x in input {
 		values << x.int()
 	}
 	if '-b' in cmdline.only_options(os.args) {
 		solution := solve_b(mut values)
-		println('Solution is: $solution')
+		println('Solution is: ${solution}')
 	} else {
 		solution := solve_a(mut values)
-		println('Solution is: $solution')
+		println('Solution is: ${solution}')
 	}
 }

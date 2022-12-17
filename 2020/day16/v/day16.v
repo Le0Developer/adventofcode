@@ -108,7 +108,7 @@ fn solve_b(input []string) i64 {
 				}
 			}
 			if !mismatch {
-				println('$field.name matches $i')
+				println('${field.name} matches ${i}')
 				field.matching << i
 			}
 		}
@@ -119,7 +119,7 @@ fn solve_b(input []string) i64 {
 		for mut field in fields {
 			if field.matching.len == 1 && !field.matched {
 				field.matched = true
-				println('100% match $field.name to ${field.matching[0]}')
+				println('100% match ${field.name} to ${field.matching[0]}')
 				for mut ofield in fields {
 					if ofield.name != field.name && field.matching[0] in ofield.matching {
 						ofield.matching = ofield.matching.filter(it != field.matching[0])
@@ -141,12 +141,12 @@ fn solve_b(input []string) i64 {
 
 fn main() {
 	input_file := os.args[1]
-	input := os.read_lines(input_file) !
+	input := os.read_lines(input_file)!
 	if '-b' in cmdline.only_options(os.args) {
 		solution := solve_b(input)
-		println('Solution is: $solution')
+		println('Solution is: ${solution}')
 	} else {
 		solution := solve_a(input)
-		println('Solution is: $solution')
+		println('Solution is: ${solution}')
 	}
 }

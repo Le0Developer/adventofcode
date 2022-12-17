@@ -24,7 +24,7 @@ fn build_regex(rules map[string]string, ruleno string, dept int) string {
 	for part in rule.split(' ') {
 		if part == '|' {
 			if count > 1 {
-				out += '{$count}'
+				out += '{${count}}'
 			}
 			out += '|'
 			is_pipe = true
@@ -32,7 +32,7 @@ fn build_regex(rules map[string]string, ruleno string, dept int) string {
 			last = '0'
 		} else {
 			if count > 1 && last != part {
-				out += '{$count}'
+				out += '{${count}}'
 				count = 0
 			}
 			if last != part {
@@ -44,7 +44,7 @@ fn build_regex(rules map[string]string, ruleno string, dept int) string {
 		}
 	}
 	if count > 1 {
-		out += '{$count}'
+		out += '{${count}}'
 	}
 	if !is_pipe {
 		return out
@@ -102,7 +102,7 @@ fn solve_b(input []string) int {
 	re := pcre.new_regex(regex, 0) or {
 		if err.str() == 'Failed to compile regex' {
 			println('PCRE cannot handle our regex, using python instead...')
-			command := 'python -c "import re; r = re.compile(\'$regex\'); print(len([x for x in $to_test if r.fullmatch(x)]))"'
+			command := 'python -c "import re; r = re.compile(\'${regex}\'); print(len([x for x in ${to_test} if r.fullmatch(x)]))"'
 			result := os.execute(command)
 			return result.output.int()
 		}
@@ -118,12 +118,12 @@ fn solve_b(input []string) int {
 
 fn main() {
 	input_file := os.args[1]
-	input := os.read_lines(input_file) !
+	input := os.read_lines(input_file)!
 	mut solution := 0
 	if '-b' in cmdline.only_options(os.args) {
 		solution = solve_b(input)
 	} else {
 		solution = solve_a(input)
 	}
-	println('Solution is: $solution')
+	println('Solution is: ${solution}')
 }

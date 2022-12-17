@@ -3,11 +3,11 @@ module main
 fn test_challenge_a() ? {
 	input_lines := ['5483143223', '2745854711', '5264556173', '6141336146', '6357385478',
 		'4167524645', '2176841721', '6882881134', '4846848554', '5283751526']
-	assert (challenge_a(input_lines) ?) == 1656
+	assert (challenge_a(input_lines)?) == 1656
 }
 
 fn test_challenge_b() ? {
 	input_lines := ['5483143223', '2745854711', '5264556173', '6141336146', '6357385478',
 		'4167524645', '2176841721', '6882881134', '4846848554', '5283751526']
-	assert (challenge_b(input_lines) ?) == 195
+	assert (challenge_b(input_lines)?) == 195
 }

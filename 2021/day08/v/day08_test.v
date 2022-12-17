@@ -13,7 +13,7 @@ fn test_challenge_a() ? {
 		'egadfb cdbfeg cegd fecab cgb gbdefca cg fgcdab egfdb bfceg | gbdfcae bgc cg cgb',
 		'gcafb gcf dcaebfg ecagb gf abcdeg gaef cafbge fdbac fegbdc | fgae cfgab fg bagce',
 	]
-	assert (challenge_a(input_lines) ?) == 26
+	assert (challenge_a(input_lines)?) == 26
 }
 
 fn test_challenge_b() ? {
@@ -29,5 +29,5 @@ fn test_challenge_b() ? {
 		'egadfb cdbfeg cegd fecab cgb gbdefca cg fgcdab egfdb bfceg | gbdfcae bgc cg cgb',
 		'gcafb gcf dcaebfg ecagb gf abcdeg gaef cafbge fdbac fegbdc | fgae cfgab fg bagce',
 	]
-	assert (challenge_b(input_lines) ?) == 61229
+	assert (challenge_b(input_lines)?) == 61229
 }

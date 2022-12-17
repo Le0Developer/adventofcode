@@ -41,7 +41,7 @@ fn solve_b(values []int, preamble int) int {
 
 fn main() {
 	input_file := os.args[1]
-	input := os.read_lines(input_file) !
+	input := os.read_lines(input_file)!
 	mut values := []int{}
 	for x in input {
 		values << x.int()
@@ -52,5 +52,5 @@ fn main() {
 	} else {
 		solution = solve_a(values, 5) // use 25 for real challenge
 	}
-	println('Solution is: $solution')
+	println('Solution is: ${solution}')
 }

@@ -50,10 +50,10 @@ fn challenge_a(input_lines []string) ?i64 {
 }
 
 fn flash(mut flashers [][]byte, mut flashed map[string]bool, mut affected map[string]bool, y int, x int) {
-	if '$y:$x' in flashed {
+	if '${y}:${x}' in flashed {
 		return
 	}
-	flashed['$y:$x'] = true
+	flashed['${y}:${x}'] = true
 	dim_y := flashers.len
 	dim_x := flashers[0].len
 	for vy in -1 .. 2 {
@@ -64,8 +64,8 @@ fn flash(mut flashers [][]byte, mut flashed map[string]bool, mut affected map[st
 			mut py := y + vy
 			mut px := x + vx
 			if py >= 0 && px >= 0 && py < dim_y && px < dim_x {
-				if '$py:$px:$vx:$vy' !in affected {
-					affected['$py:$px:$vx:$vy'] = true
+				if '${py}:${px}:${vx}:${vy}' !in affected {
+					affected['${py}:${px}:${vx}:${vy}'] = true
 					flashers[py][px]++
 					if flashers[py][px] >= 10 {
 						flash(mut flashers, mut flashed, mut affected, py, px)
@@ -130,7 +130,7 @@ fn main() {
 	fp.application('AdventOfCode 2021 day 11')
 	fp.version('v0.1.0')
 	fp.skip_executable()
-	fp.limit_free_args_to_exactly(1) ?
+	fp.limit_free_args_to_exactly(1)?
 	is_b := fp.bool('b', `b`, false, 'b challenge')
 	// more options here
 	additional_args := fp.finalize() or {
@@ -139,7 +139,7 @@ fn main() {
 		return
 	}
 	input_filename := additional_args[0]
-	input_lines := os.read_lines(input_filename) !
-	solution := if !is_b { challenge_a(input_lines) ? } else { challenge_b(input_lines) ? }
-	println('Solution is $solution')
+	input_lines := os.read_lines(input_filename)!
+	solution := if !is_b { challenge_a(input_lines)? } else { challenge_b(input_lines)? }
+	println('Solution is ${solution}')
 }
