@@ -18,15 +18,13 @@ fn do_the_thing(input_lines []string, max_folds int, display_last bool) ?i64 {
 	}
 	max_x := 1 + arrays.max(raw_dots.map(it.split(',')[0].int())) ?
 	max_y := 1 + arrays.max(raw_dots.map(it.split(',')[1].int())) ?
-	mut dots := [][]bool{cap: max_y}
+	mut dots := [][]bool{len: max_y, init: []bool{cap: max_x}}
 	for y in 0 .. max_y {
-		mut row := []bool{cap: max_x}
 		for x in 0 .. max_x {
-			row << '$x,$y' in fast_raw_dots // ~10 times faster than raw_dots
+			dots[y] << '$x,$y' in fast_raw_dots // ~10 times faster than raw_dots
 			// print(if row.last() { '#' } else { '.' })
 		}
 		// println('')
-		dots << row
 	}
 	for i, instruction in instructions {
 		if i >= max_folds {
